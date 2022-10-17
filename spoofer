@@ -1,0 +1,12 @@
+local mt = getrawmetatable(game);
+make_writeable(mt);
+local old_index = mt.__index;
+
+mt.__index = function(a, b)
+if tostring(a) == "Workspace" then 
+	if tostring(b) == "FilteringEnabled" then
+		return false;
+	end
+end
+return old_index(a, b);
+end
